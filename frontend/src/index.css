@@ -1,0 +1,221 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  font-family: 'Inter', system-ui, sans-serif;
+  line-height: 1.6;
+  font-weight: 400;
+  color-scheme: light;
+  color: #0f172a;
+  background-color: #f8fafc;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  min-height: 100vh;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+a {
+  color: #2563eb;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: #1d4ed8;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  color: #0f172a;
+  line-height: 1.2;
+}
+
+/* ================================
+   GLOBAL RESET & BASE
+================================ */
+@layer base {
+  body {
+    @apply bg-slate-50 text-slate-800 font-sans;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-bold text-slate-900;
+  }
+}
+
+/* ================================
+   REUSABLE UI COMPONENTS
+================================ */
+@layer components {
+
+  /* Layout */
+  .app-layout {
+    @apply flex min-h-screen;
+  }
+
+  .main-content {
+    @apply flex-1 p-8 space-y-8;
+  }
+
+  /* Cards */
+  .card {
+    @apply bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 border border-slate-100;
+  }
+
+  .card-header {
+    @apply font-semibold text-base mb-4 text-slate-900;
+  }
+
+  /* Buttons */
+  .btn-primary {
+    @apply bg-gradient-to-r from-blue-600 to-blue-700 text-white px-6 py-2.5 rounded-lg text-sm font-semibold hover:shadow-lg hover:from-blue-700 hover:to-blue-800 transition-all duration-300 disabled:opacity-50;
+  }
+
+  .btn-secondary {
+    @apply bg-slate-100 text-slate-900 px-6 py-2.5 rounded-lg text-sm font-semibold hover:bg-slate-200 transition-colors duration-300;
+  }
+
+  .btn-small {
+    @apply px-3 py-1.5 text-xs font-medium rounded-md transition-all duration-300;
+  }
+
+  /* Upload box */
+  .upload-box {
+    @apply card p-8 text-center cursor-pointer hover:border-blue-400 hover:bg-blue-50 transition-all duration-300;
+  }
+
+  /* Stats */
+  .stat-card {
+    @apply card p-6 hover:scale-105 transition-transform duration-300;
+  }
+
+  .stat-title {
+    @apply text-xs font-medium text-slate-500 uppercase tracking-wider;
+  }
+
+  .stat-value {
+    @apply text-3xl font-bold mt-3 text-blue-600;
+  }
+
+  /* Table */
+  .table {
+    @apply w-full text-sm;
+  }
+
+  .table thead {
+    @apply bg-gradient-to-r from-slate-50 to-slate-100 text-slate-700 border-b border-slate-200;
+  }
+
+  .table th {
+    @apply p-4 text-left font-semibold;
+  }
+
+  .table td {
+    @apply p-4 border-b border-slate-100;
+  }
+
+  .table tbody tr {
+    @apply hover:bg-blue-50 transition-colors duration-200;
+  }
+
+  /* Sidebar */
+  .sidebar {
+    @apply w-64 bg-gradient-to-b from-slate-900 to-slate-800 text-white min-h-screen shadow-lg;
+  }
+
+  .sidebar-content {
+    @apply p-6;
+  }
+
+  .sidebar-title {
+    @apply text-2xl font-bold bg-gradient-to-r from-blue-400 to-blue-300 bg-clip-text text-transparent mb-8;
+  }
+
+  .sidebar-nav {
+    @apply space-y-1;
+  }
+
+  .sidebar-item {
+    @apply text-sm text-slate-300 py-3 px-4 cursor-pointer hover:bg-slate-700 rounded-lg transition-all duration-200 font-medium;
+  }
+
+  .sidebar-item-active {
+    @apply bg-gradient-to-r from-blue-600 to-blue-500 text-white font-semibold;
+  }
+
+  /* Topbar */
+  .topbar {
+    @apply flex justify-between items-center mb-8 pb-6 border-b border-slate-200;
+  }
+
+  .topbar-title {
+    @apply text-3xl font-bold text-slate-900;
+  }
+
+  /* Score Bar */
+  .score-bar-container {
+    @apply mb-6;
+  }
+
+  .score-bar-label {
+    @apply flex justify-between text-sm font-semibold mb-2 text-slate-700;
+  }
+
+  .score-bar {
+    @apply w-full bg-slate-200 rounded-full h-3 overflow-hidden;
+  }
+
+  .score-bar-fill {
+    @apply h-3 rounded-full transition-all duration-500 ease-out;
+  }
+
+  /* Resume highlight */
+  .highlight-match {
+    @apply bg-green-100 text-green-800 px-2 rounded font-semibold;
+  }
+
+  .highlight-missing {
+    @apply bg-red-100 text-red-800 px-2 rounded font-semibold;
+  }
+
+  /* Badges */
+  .badge {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold;
+  }
+
+  .badge-success {
+    @apply bg-green-100 text-green-800;
+  }
+
+  .badge-danger {
+    @apply bg-red-100 text-red-800;
+  }
+
+  .badge-warning {
+    @apply bg-amber-100 text-amber-800;
+  }
+
+  /* Section */
+  .section-title {
+    @apply text-2xl font-bold text-slate-900 mb-6;
+  }
+}
