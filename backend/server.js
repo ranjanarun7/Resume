@@ -8,7 +8,7 @@ import authRoutes from "./routes/auth.js";
 dotenv.config();
 
 const app = express();
-app.use(cors());
+app.use(cors({ origin: ["http://localhost:3000", "https://resume-git-main-arun-kumars-projects-7be3f015.vercel.app/" ] }));
 app.use(express.json());
 
 // API Routes

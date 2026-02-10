@@ -7,6 +7,7 @@ export default function Signup({ onSignupSuccess, onLoginClick }) {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const backendUrl = process.env.BACKEND || "http://localhost:5000";
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -26,7 +27,7 @@ export default function Signup({ onSignupSuccess, onLoginClick }) {
     setLoading(true);
 
     try {
-      const response = await fetch("http://localhost:5000/api/auth/signup", {
+      const response = await fetch(`${backendUrl}/api/auth/signup`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

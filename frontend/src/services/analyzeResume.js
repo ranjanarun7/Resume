@@ -1,9 +1,10 @@
 export async function analyzeResume(file, jobDescription) {
   const formData = new FormData();
+  const backendUrl = process.env.BACKEND || "http://localhost:5000";
   formData.append("resume", file);
   formData.append("jobDescription", jobDescription);
 
-  const res = await fetch("http://localhost:5000/api/resume/analyze", {
+  const res = await fetch(`${backendUrl}/api/resume/analyze`, {
     method: "POST",
     body: formData,
   });
@@ -16,7 +17,7 @@ export async function getDynamicScores(file) {
   const formData = new FormData();
   formData.append("resume", file);
 
-  const res = await fetch("http://localhost:5000/api/resume/dynamic-score", {
+  const res = await fetch(`${backendUrl}/api/resume/dynamic-score`, {
     method: "POST",
     body: formData,
   });
@@ -30,7 +31,7 @@ export async function getMissingSkills(file, jobDescription) {
   formData.append("resume", file);
   formData.append("jobDescription", jobDescription);
 
-  const res = await fetch("http://localhost:5000/api/resume/missing-skills", {
+  const res = await fetch(`${backendUrl}/api/resume/missing-skills`, {
     method: "POST",
     body: formData,
   });
