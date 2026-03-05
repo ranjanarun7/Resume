@@ -21,7 +21,7 @@ export default function Dashboard() {
   const [activeTab, setActiveTab] = useState("dashboard");
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [user, setUser] = useState(null);
-  const [authPage, setAuthPage] = useState("login"); // "login" or "signup"
+  const [authPage, setAuthPage] = useState("login");
   const [isLoading, setIsLoading] = useState(true);
 
   // Check if user is already logged in
@@ -35,6 +35,11 @@ export default function Dashboard() {
         localStorage.removeItem("user");
         localStorage.removeItem("token");
       }
+    } else {
+      // Set default user to bypass login
+      const defaultUser = { name: "User", email: "user@example.com", role: "admin" };
+      setUser(defaultUser);
+      localStorage.setItem("user", JSON.stringify(defaultUser));
     }
     setIsLoading(false);
   }, []);
@@ -64,19 +69,20 @@ export default function Dashboard() {
     );
   }
 
-  if (!user) {
-    return authPage === "login" ? (
-      <Login
-        onLoginSuccess={handleLoginSuccess}
-        onSignupClick={() => setAuthPage("signup")}
-      />
-    ) : (
-      <Signup
-        onSignupSuccess={handleLoginSuccess}
-        onLoginClick={() => setAuthPage("login")}
-      />
-    );
-  }
+  // Auth check removed - app now accessible without login
+  // if (!user) {
+  //   return authPage === "login" ? (
+  //     <Login
+  //       onLoginSuccess={handleLoginSuccess}
+  //       onSignupClick={() => setAuthPage("signup")}
+  //     />
+  //   ) : (
+  //     <Signup
+  //       onSignupSuccess={handleLoginSuccess}
+  //       onLoginClick={() => setAuthPage("login")}
+  //     />
+  //   );
+  // }
 
   // If trying to access admin without admin role
   if (activeTab === "admin" && !isAdmin) {
